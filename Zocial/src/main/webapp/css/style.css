@@ -1,0 +1,599 @@
+@charset "UTF-8";
+
+
+/* ==============================
+   Variabili
+   ============================== */
+:root {
+  --black: #171321;
+  --dkblue: #0d314b;
+  --plum: #4b0d49;
+  --hotmag: #ff17e4;
+  --magenta: #e310cb;
+  --aqua: #86fbfb;
+  --white: #f7f8fa;
+
+  --color1: #9F84D9; 
+  --color2: #252273; 
+  --color3: #1E28D9; 
+  --color4: #262DA6; 
+  --color5: #D9D4D2; 
+
+  --font-size: 1.3rem;
+  --mono: "Oxygen mono", monospace;
+  --sans: Oxygen, sans-serif;
+  --Tek: Teko;
+  --font-montserrat: Montserrat;
+  --font1-nunino: Nunito;
+  --font2-nunino-sans: Nunito+Sans;
+  --font3-handlee: Handlee;
+}
+
+/* ==============================
+   Global Styling Enhancements
+   ============================== */
+html {
+  scroll-behavior: smooth; /* Adds smooth scrolling to anchor links */
+  box-sizing: border-box; /* Sets box-sizing to border-box for all elements */
+}
+
+/* Basic Reset */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; /* Inherits box-sizing from html */
+}
+
+/* Body Styling */
+body {
+  font-family: var(--font1-nunino); /* Uses custom font */
+  font-size: 1.1rem; /* Adjusted for better readability */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f4f4f4; /* Background color */
+  color: #333; /* Text color */
+}
+
+/* ==============================
+   Header Styling
+   ============================== */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--white);
+  color: var(--color1);
+  padding: 10px 20px;
+  font-family: var(--font3-handlee);
+  height: 55px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* Ensure the header is above other content */
+}
+
+.header::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30%; /* Larghezza del bordo inferiore */
+  border-bottom: 2px solid var(--color4); /* Specifica spessore, stile e colore del bordo */
+}
+
+.header .brand {
+  text-align: center;
+  font-size: 2rem;
+  background: linear-gradient(to right, var(--color1), var(--color4));
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  font-weight: bold;
+}
+
+.header .brand::first-letter {
+  font-size: 36px;
+  font-family: 'Brush Script MT', cursive;
+  display: inline-block;
+  color: var(--color1); /* Example color for the brushed effect */
+}
+
+.header .center-content {
+  display: flex;
+  align-items: center;
+  color: var(--color1); /* Colore per l'icona e il testo */
+  font-size: 30px;
+}
+
+.header .center-content i {
+  margin-right: 30px; /* Spaziatura tra l'icona e il testo */
+}
+
+.profile-pic img {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+
+}
+
+/* ==============================
+   Animazione personalizzata
+   ============================== */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+.custom-bounce {
+  animation: bounce 2s infinite;
+  font-size: 40px;
+  color: var(--color1);
+}
+
+
+/* ==============================
+   Main Grid Layout
+   ============================== */
+.main-grid {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 20px;
+  padding: 20px;
+  flex-grow: 1;
+  overflow: auto;
+  padding-top: 60px;
+}
+
+/* ==============================
+   Main Section Styling
+   ============================== */
+.main-section {
+  display: grid;
+  grid-template-columns: 35% 65%;
+  grid-template-rows: auto auto;
+  height: calc(100vh - 60px); /* Full height minus the header height */
+  background: linear-gradient(45deg, rgb(245, 215, 245), white); /* Background image with gradient overlay */
+  background-size: cover; /* Cover the entire section */
+}
+/* ==============================
+   Sidebar Styling
+   ============================== */
+   
+.sidebar {
+  background-color: #ffffff;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  height: fit-content;
+  position: fixed;
+  width: 200px;
+}
+
+.sidebar-btn {
+  display: block;
+  width: 100%;
+  background-color: var(--color1);
+  color: white;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.sidebar-btn i {
+  margin-right: 10px;
+}
+
+.sidebar-btn:hover {
+  background-color: #3d1845;
+}
+/* ==============================
+   Sidebar Styling
+   ============================== */
+.aside-sidebar {
+  background-color: #ffffff;
+  padding: 20px;
+  box-shadow: 0 2px 10px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  grid-column: 1/2;
+  grid-row: 1/2;
+  width: 30%;
+  height: 70vh;
+  position: fixed;
+  margin: 30px 10px 20px 40px;
+}
+
+.aside-dec {
+  grid-column: 1/2;
+  grid-row: 2/3;
+}
+
+.aside-sidebar::after {
+  content: "";
+  height: 100vh; /* Full height of the viewport */
+}
+
+.aside-sidebar h2 {
+  margin-bottom: 20px;
+}
+
+.aside-sidebar form {
+  display: flex;
+  flex-direction: column;
+}
+
+.aside-sidebar form label {
+  margin-bottom: 5px;
+}
+
+.aside-sidebar form input {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.aside-sidebar form select {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  appearance: none; /* Rimuove lo stile predefinito del browser */
+  background-color: #fff;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="gray" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px 16px;
+  padding-right: 30px; /* Spazio per l'icona */
+}
+
+.aside-sidebar form button,
+.aside-sidebar form .submit-button
+  {
+  background-color: var(--color1);
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top:1rem;
+
+}
+
+.aside-sidebar form button:hover,
+.aside-sidebar form .submit-button:hover
+
+  {
+  background-color: #3d1845;
+}
+/* ==============================
+   Post Feed Styling
+   ============================== */
+.post-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  grid-column: 2 /3;
+}
+
+.search-bar {
+  margin-bottom: 20px;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* ==============================
+   Post Card Styling
+   ============================== */
+.post-card {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.post-card h3 {
+  margin-bottom: 10px;
+}
+
+.post-card p {
+  margin-bottom: 15px;
+}
+
+.post-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.post-actions button {
+  background-color:var(--color1);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.post-actions button:hover {
+  background-color: #ba2af3;
+}
+
+.like-btn i,
+.unlike-btn i,
+.comment-btn i {
+  margin-right: 5px;
+}
+
+/* ==============================
+   Pulsanti
+   ============================== */
+button {
+  text-decoration: none;
+  color: var(--color5);
+  background-color: var(--color1);
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  height: 40px; /* Ensure consistent height */
+}
+
+button:hover {
+  background-color: var(--dkblue);
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* ==============================
+   Footer Styling
+   ============================== */
+footer {
+  background-color: var(--white);
+  padding: 20px;
+  color: var(--color5);
+  bottom: 0;
+  width: 100%;
+  flex-wrap: wrap;
+  font-family: var(--font3-handlee);
+}
+
+footer .social-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+footer .social-icons a {
+  color: var(--color1);
+  margin: 0 10px;
+  font-size: 24px;
+  text-decoration: none;
+}
+
+footer .social-icons a:hover {
+  color: var(--dkblue); /* Example hover color */
+}
+
+footer .brand {
+  font-size: 30px;
+  font-weight: bold;
+  position: relative;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to right, var(--color1), var(--color4));
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+footer .brand-text::first-letter {
+  font-size: 44px;
+  font-family: 'Brush Script MT', cursive;
+  color: var(--color1); /* Example color for the brushed effect */
+}
+
+footer .brand::before,
+footer .brand::after {
+  content: "";
+  flex: 1;
+  border-bottom: 2px solid var(--color2); /* Specifica spessore, stile e colore del bordo */
+  margin: 0 10px; /* Spaziatura tra la linea e il testo */
+}
+
+footer .footer-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+footer .footer-links a {
+  color: var(--color2);
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+footer .footer-links a:hover {
+  text-decoration: underline;
+}
+
+footer .copyright {
+  text-align: center;
+  width: 100%;
+  margin-top: 10px;
+  color: var(--color4);
+}
+
+
+/* ==============================
+   Navbar
+   ============================== */
+   
+.navbar  {
+	   display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: transparent;
+    background: linear-gradient(45deg, white,rgb(245, 82, 245)); /* Initial gradient */
+  
+    margin-bottom: 2px; 
+    font-family: var(--font1-nunino);
+    height: 60px;
+	}
+  
+  .navbar .brand {
+    text-align: center;
+    font-size: 2rem;
+    background: linear-gradient(to right, var(--color1), var(--color4));
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    font-weight: bold;
+  }
+  .navbar .brand::first-letter {
+    font-size: 36px;
+    font-family: 'Brush Script MT', cursive;
+    display: inline-block;
+    color: var(--color1); 
+  }
+ 
+  
+  .navbar .nav-items {
+  	display: flex;
+  	width: fit-cotent;
+  	max-width: 40%;
+  }
+  
+  .nav-items form{
+  	display: flex;
+  }
+  
+ .navbar .nav-items input[type="text"],
+  .navbar .nav-items input[type="password"],
+  .navbar .nav-items button {
+    margin-right: 10px;
+    padding: 10px;
+    border-radius: 4px;
+    font-family: var(--font1-nunino);
+    font-size: 14px;
+    height: 40px; 
+    border: none; 
+    color: white;
+    
+  }
+  
+  .navbar .nav-items input[type="text"]::placeholder,
+  .navbar .nav-items input[type="password"]::placeholder {
+    font-family: var(--font1-nunino);
+    font-size: 14px;
+  }
+  
+  /* ==============================
+   modal
+   ============================== */
+  
+  .modal{
+  width:40rem;
+  position: fixed;
+  top: 25%;
+  left: 25%;
+  display: none;
+
+
+}
+
+.modal-header {
+  padding: 2px 16px;
+  background-color: var(--color1);
+  color: white;
+}
+
+
+.modal-body {padding: 2px 16px;}
+
+.modal-footer {
+  padding: 2px 16px;
+  background-color: var(--color1);
+  color: white;
+}
+
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 80%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+
+.adminImg {
+	width: 200px; 
+	height: 200px;
+	background-size: cover;
+    background-position: center; /* Centra l'immagine */
+    background-repeat: no-repeat; /* Evita che l'immagine venga ripetuta */
+}
+
+  /* ==============================
+  Card homepage
+   ============================== */
+
+   .card-section {
+  padding: 20px;
+  overflow-y: auto; /* Allows scrolling within the card section */
+  grid-column: 2/3;
+  grid-row: 1/3;
+
+
+}
+
+@keyframes gradient {
+  0% {
+    background: linear-gradient(45deg, violet, white);
+  }
+  50% {
+    background: linear-gradient(45deg, white, violet);
+  }
+  100% {
+    background: linear-gradient(45deg, violet, white);
+  }
+}
+
+.card {
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(223, 12, 12, 0.5)), 
+              url("../media/homepage-img.png") no-repeat center center;
+  background-size: cover; /* Cover the entire section */
+  min-height: 100%;
+  color: white; /* Assicura che il testo sia leggibile */
+}
